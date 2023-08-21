@@ -21,9 +21,11 @@ app.use(cookieParser());
 
 
 import user from "./routes/userRoutes.js"
+import  questions  from "./routes/questionsRoutes.js";
 
 
 app.use("/api/v1",user)
+app.use("/api/v1",questions)
 
 
 export default app;

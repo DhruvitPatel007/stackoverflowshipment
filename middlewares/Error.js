@@ -8,5 +8,4 @@ const ErrorMiddleware = (err,req,res,next)=>{
         message:err.message
     })
 }
-
 export default ErrorMiddleware;
