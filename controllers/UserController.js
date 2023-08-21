@@ -1,15 +1,14 @@
 
 import { catchAsyncError } from "../middlewares/catchAsyncError.js";
-import ErrorHandler from "../utils/erroeHandler.js";
+import ErrorHandler from "../utils/errorHandler.js";
 import { User } from "../models/User.js";
 import { sendToken } from "../utils/sendToken.js";
 
 
 export const register = catchAsyncError(async (req, res, next) => {
     const { name, email, password } = req.body;
-    const file = req.file;
   
-    if (!name || !email || !password || !file)
+    if (!name || !email || !password)
       return next(new ErrorHandler("Please enter all fields", 400));
   
     let user = await User.findOne({ email });
@@ -29,7 +28,6 @@ export const register = catchAsyncError(async (req, res, next) => {
   export const login = catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
   
-    //const file = req.file;
   
     if (!email || !password)
       return next(new ErrorHandler("Please enter all fields", 400));
